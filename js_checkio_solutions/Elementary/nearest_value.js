@@ -1,5 +1,5 @@
 #!/usr/bin/env checkio --domain=js run nearest-value
-
+"use strict";
 // Find the nearest value to the given one.
 // 
 // You are given a list of values as Array form and a value for which you need to find the nearest one.
@@ -14,45 +14,59 @@
 // 
 // 
 // END_DESC
-
-// import assert from "assert";
-const assert = require('assert');
-
-// function nearestValue(values: number[], search: number): number {
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+// const assert = require('assert');
+// function nearestValue(values, search) {
+//     let idx = values.sort((a, b) => (a - b)).findIndex((num) => num >= search);
+//     if (idx === -1) {
+//         if (values[0] >= search) {
+//             return values[0];
+//         } else if (values[values.length - 1] <= search) {
+//             return values[values.length - 1];
+//         }
+//     }
+//     if ((idx === 0)) {
+//         return values[idx];
+//     }
+//     if ((values[idx] - search) < search - (values[idx - 1])) {
+//         return values[idx];
+//     } else {
+//         return values[idx - 1];
+//     }
+// }
+var assert_1 = __importDefault(require("assert"));
 function nearestValue(values, search) {
-
-    let idx = values.sort((a, b) => (a - b)).findIndex((num) => num >= search);
-
+    var idx = values.sort(function (a, b) { return (a - b); }).findIndex(function (num) { return num >= search; });
     if (idx === -1) {
         if (values[0] >= search) {
             return values[0];
-        } else if (values[values.length - 1] <= search) {
+        }
+        else if (values[values.length - 1] <= search) {
             return values[values.length - 1];
         }
     }
-
     if ((idx === 0)) {
         return values[idx];
     }
-
     if ((values[idx] - search) < search - (values[idx - 1])) {
         return values[idx];
-    } else {
+    }
+    else {
         return values[idx - 1];
     }
 }
-
 console.log('Example:');
 console.log(nearestValue([7, 10, 4, 11, 12, 17], 4));
-
 // These "asserts" are used for self-checking
-assert.equal(nearestValue([4, 7, 10, 11, 12, 17], 9), 10);
-assert.equal(nearestValue([4, 7, 10, 11, 12, 17], 8), 7);
-assert.equal(nearestValue([4, 8, 10, 11, 12, 17], 9), 8);
-assert.equal(nearestValue([4, 9, 10, 11, 12, 17], 9), 9);
-assert.equal(nearestValue([4, 7, 10, 11, 12, 17], 0), 4);
-assert.equal(nearestValue([4, 7, 10, 11, 12, 17], 100), 17);
-assert.equal(nearestValue([5, 10, 8, 12, 89, 100], 7), 8);
-assert.equal(nearestValue([-1, 2, 3], 0), -1);
-
+assert_1.default.equal(nearestValue([4, 7, 10, 11, 12, 17], 9), 10);
+assert_1.default.equal(nearestValue([4, 7, 10, 11, 12, 17], 8), 7);
+assert_1.default.equal(nearestValue([4, 8, 10, 11, 12, 17], 9), 8);
+assert_1.default.equal(nearestValue([4, 9, 10, 11, 12, 17], 9), 9);
+assert_1.default.equal(nearestValue([4, 7, 10, 11, 12, 17], 0), 4);
+assert_1.default.equal(nearestValue([4, 7, 10, 11, 12, 17], 100), 17);
+assert_1.default.equal(nearestValue([5, 10, 8, 12, 89, 100], 7), 8);
+assert_1.default.equal(nearestValue([-1, 2, 3], 0), -1);
 console.log("Coding complete? Click 'Check' to earn cool rewards!");

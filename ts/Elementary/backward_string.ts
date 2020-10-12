@@ -7,10 +7,17 @@
 //
 //
 // END_DESC
-var assert = require("assert");
-function backwardString(value) {
-    return value.split('').reverse().join('');
-}
+
+export { };
+
+import assert from "assert";
+// var assert = require("assert");
+// function backwardString(value) {
+//     return value.split('').reverse().join('');
+// }
+
+const backwardString = (value: string): string => value.split('').reverse().join(''); 
+
 console.log("Example:");
 console.log(backwardString("val"));
 // These "asserts" are used for self-checking

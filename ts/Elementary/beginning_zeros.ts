@@ -11,13 +11,22 @@
 // 
 // END_DESC
 
-// import assert from "assert";
-const assert = require('assert');
+// const assert = require('assert');
+// function beginningZeros(text) {
+//     return text.match('^[0]*')[0].length;
+// }
 
-// function beginningZeros(text: string): number {
 // const beginningZeros = (text) => text.match('^[0]*')[0].length;
-function beginningZeros(text) {
-    return text.match('^[0]*')[0].length;
+
+import assert from "assert";
+const beginningZeros = (text: string): number => {
+    let matchStr = text.match('^[0]*');
+
+    if (matchStr === null) {
+        return -1;
+    } else {
+        return matchStr[0].length;
+    }
 }
 
 console.log('Example:');

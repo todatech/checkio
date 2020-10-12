@@ -1,5 +1,5 @@
 #!/usr/bin/env checkio --domain=js run number-length
-
+"use strict";
 // You have a positive integer. Try to find out how many digits it has?
 // 
 // Input:A positive Int
@@ -8,30 +8,21 @@
 // 
 // 
 // END_DESC
-
-//
-
-//
-
-//
-//
-
-
-// import assert from "assert";
-const assert = require("assert");
-
-// function numberLength(value: number): number {
-function numberLength(value) {
-  return value.toString().length;
-}
-
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+// const assert = require("assert");
+// function numberLength(value) {
+//   return value.toString().length;
+// }
+var assert_1 = __importDefault(require("assert"));
+var numberLength = function (value) { return value.toString().length; };
 console.log("Example:");
 console.log(numberLength(10));
-
 // These "asserts" are used for self-checking
-assert.equal(numberLength(10), 2);
-assert.equal(numberLength(0), 1);
-assert.equal(numberLength(4), 1);
-assert.equal(numberLength(44), 2);
-
+assert_1.default.equal(numberLength(10), 2);
+assert_1.default.equal(numberLength(0), 1);
+assert_1.default.equal(numberLength(4), 1);
+assert_1.default.equal(numberLength(44), 2);
 console.log("Coding complete? Click 'Check' to earn cool rewards!");

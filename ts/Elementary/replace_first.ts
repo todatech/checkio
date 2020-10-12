@@ -11,14 +11,20 @@
 // 
 // END_DESC
 
-// import assert from "assert";
-const assert = require('assert');
-
-function replaceFirst(values) {
+// const assert = require('assert');
+// function replaceFirst(values) {
+//     if (Array.isArray(values) && !values.length) {
+//         return [];
+//     }
+//     values.push(values.shift())
+//     return values;
+// }
+import assert from "assert";
+const replaceFirst = (values: number[]): number[] => {
     if (Array.isArray(values) && !values.length) {
         return [];
     }
-    values.push(values.shift())
+    values.push((values.shift() as number))
     return values;
 }
 

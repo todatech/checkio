@@ -9,22 +9,14 @@
 // 
 // END_DESC
 
-//
+// const assert = require("assert");
+// function numberLength(value) {
+//   return value.toString().length;
+// }
 
-//
-
-//
-//
-
-
-// import assert from "assert";
-const assert = require("assert");
-
-// function numberLength(value: number): number {
-function numberLength(value) {
-  return value.toString().length;
-}
-
+import assert from "assert";
+const numberLength = (value: number): number => value.toString().length;
+  
 console.log("Example:");
 console.log(numberLength(10));
 

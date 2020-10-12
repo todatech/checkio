@@ -13,17 +13,25 @@
 // 
 // 
 // END_DESC
-// import assert from "assert";
-var assert = require('assert');
-function removeAllBefore(values, b) {
-    // function removeAllBefore(values, b)  {
+export { }
+import assert from "assert";
+// var assert = require('assert');
+function removeAllBefore(values: number[], b: number): number[] {
+
+    //Checking empty Array
     if (Array.isArray(values) && !values.length)
         return values;
-    var idx = values.findIndex(function (val) { return val === b; });
-    if (idx === -1)
+
+    // Find Index
+    const idx = values.findIndex((val) => (val === b));
+
+    // return the whole array if number can't be ofound
+    if (idx === -1) {
         return values;
-    values.splice(0, idx);
-    return values;
+    } else {
+        values.splice(0, idx);
+        return values;
+    }
 }
 console.log('Example:');
 console.log(removeAllBefore([1, 2, 3, 4, 5], 3));

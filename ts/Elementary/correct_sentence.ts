@@ -14,15 +14,26 @@
 // END_DESC
 
 // import assert from "assert";
-const assert = require('assert');
+// const assert = require('assert');
 
-function correctSentence(text) {
+// function correctSentence(text) {
+//     text = text[0].toUpperCase() + text.slice(1,)
+//     if (text[(text.length - 1)] !== '.') {
+//         text = text.concat('.');
+//     }
+//     return text;
+// }
+
+import assert from "assert";
+
+function correctSentence(text:string): string {
     text = text[0].toUpperCase() + text.slice(1,)
     if (text[(text.length - 1)] !== '.') {
         text = text.concat('.');
     }
     return text;
 }
+
 
 console.log('Example:');
 console.log(correctSentence('greetings, friends'));

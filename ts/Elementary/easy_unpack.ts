@@ -10,13 +10,13 @@
 // END_DESC
 
 import assert from "assert";
-// const assert = require('assert');
 
-function easyUnpack(values: any[]): any[] {
-// function easyUnpack(values) {
+// function easyUnpack(values: number[]): number[] {
 
-    return [values[0], values[2], values[values.length - 2]]
-}
+//     return [values[0], values[2], values[values.length - 2]]
+// }
+
+const easyUnpack = (values: number[]): number[] => [values[0], values[2], values[values.length - 2]]; 
 
 console.log('Example:');
 console.log(easyUnpack([1, 2, 3, 4, 5, 6, 7, 9]));

@@ -11,24 +11,30 @@
 // 
 // END_DESC
 
-// import assert from "assert";
-const assert = require('assert');
+import assert from "assert";
 
-// function splitPairs(text: string): string[] {
-function splitPairs(text) {
-  let len = text.length;
-  if (len === 0) {
-    return [];
-  }
+// return text.split('').reduce<[][]>((acc, val, idx) => {
+//   if (idx % 2) {
+//     acc.push(acc.pop()[0] + val)
+//   } else {
+//     acc.push(val + '_')
+//   }
+//   return acc;
+// }, '');
 
-  return text.split('').reduce((acc, val, idx) => {
+function splitPairs(text: string): string[] {
+  if (text.length === 0) { return []; }
+
+  const reducer = (acc: string[], val: string, idx: number) => {
     if (idx % 2) {
-      acc.push(acc.pop()[0] + val)
+      acc.push((acc.pop() as string)[0] + val)
     } else {
       acc.push(val + '_')
     }
     return acc;
-  }, []);
+  }
+
+  return text.split('').reduce(reducer, []);
 }
 
 console.log('Example:');

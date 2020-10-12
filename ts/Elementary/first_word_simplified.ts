@@ -13,12 +13,13 @@
 //
 // END_DESC
 
-// import assert from "assert";
-const assert = require("assert").strict;
+import assert from "assert";
+// const assert = require("assert").strict;
+// function firstWord(text: string): string {
+//   return text.split(" ")[0];
+// }
 
-function firstWord(text) {
-  return text.split(" ")[0];
-}
+const firstWord = (text: string): string => text.split(" ")[0];
 
 console.log("Example:");
 console.log(firstWord("Hello world"));

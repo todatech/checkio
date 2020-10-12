@@ -13,14 +13,19 @@
 // 
 // END_DESC
 
-// import assert from "assert";
-const assert = require('assert');
+// const assert = require('assert');
 
 // function betweenMarkers(line: string, left: string, right: string): string {
-function betweenMarkers(line, left, right) {
-    // const leftMarkerIndex = line.indexOf(left);
-    // const rightMarkerIndex = line.indexOf(right);
-    // return line.slice(leftMarkerIndex + 1, rightMarkerIndex)
+// function betweenMarkers(line, left, right) {
+// const leftMarkerIndex = line.indexOf(left);
+// const rightMarkerIndex = line.indexOf(right);
+// return line.slice(leftMarkerIndex + 1, rightMarkerIndex)
+// return line.slice(line.indexOf(left) + 1, line.indexOf(right));
+// }
+
+
+import assert from "assert";
+function betweenMarkers(line: string, left: string, right: string): string {
     return line.slice(line.indexOf(left) + 1, line.indexOf(right));
 }
 

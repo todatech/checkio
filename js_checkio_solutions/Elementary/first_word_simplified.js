@@ -1,5 +1,5 @@
 #!/usr/bin/env checkio --domain=js run first-word-simplified
-
+"use strict";
 // You are given a string where you have to find its first word.
 //
 // This is a simplified version of theFirst Wordmission.
@@ -12,20 +12,20 @@
 //
 //
 // END_DESC
-
-// import assert from "assert";
-const assert = require("assert").strict;
-
-function firstWord(text) {
-  return text.split(" ")[0];
-}
-
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var assert_1 = __importDefault(require("assert"));
+// const assert = require("assert").strict;
+// function firstWord(text: string): string {
+//   return text.split(" ")[0];
+// }
+var firstWord = function (text) { return text.split(" ")[0]; };
 console.log("Example:");
 console.log(firstWord("Hello world"));
-
 // These "asserts" are used for self-checking
-assert.equal(firstWord("Hello world"), "Hello");
-assert.equal(firstWord("a word"), "a");
-assert.equal(firstWord("hi"), "hi");
-
+assert_1.default.equal(firstWord("Hello world"), "Hello");
+assert_1.default.equal(firstWord("a word"), "a");
+assert_1.default.equal(firstWord("hi"), "hi");
 console.log("Coding complete? Click 'Check' to earn cool rewards!");

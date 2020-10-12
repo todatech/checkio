@@ -11,14 +11,9 @@
 // 
 // END_DESC
 
-// import assert from "assert";
-const assert = require('assert');
+import assert from "assert";
 
-// function isEven(num: number): boolean {
-function isEven(num) {
-    return (num % 2) ? false : true;
-    // return false;
-}
+const isEven = (num: number): boolean => ((num % 2) ? false : true);
 
 console.log('Example:');
 console.log(isEven(2));

@@ -9,12 +9,16 @@
 // 
 // END_DESC
 
-// import assert from "assert";
-var assert = require('assert');
-function maxDigit(value) {
-    // function maxDigit(value) {
+import assert from "assert";
+// var assert = require('assert');
+// function maxDigit(value) {
+//     // function maxDigit(value) {
+//     return value.toString().split('').reduce(function (acc, val) { return ((acc > +val) ? acc : +val); }, 0);
+// }
+const maxDigit = (value: number): number => {
     return value.toString().split('').reduce(function (acc, val) { return ((acc > +val) ? acc : +val); }, 0);
 }
+
 console.log('Example:');
 console.log(maxDigit(1264));
 // These "asserts" are used for self-checking

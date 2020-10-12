@@ -13,11 +13,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var assert_1 = __importDefault(require("assert"));
-// const assert = require('assert');
-function easyUnpack(values) {
-    // function easyUnpack(values) {
-    return [values[0], values[2], values[values.length - 2]];
-}
+// function easyUnpack(values: number[]): number[] {
+//     return [values[0], values[2], values[values.length - 2]]
+// }
+var easyUnpack = function (values) { return [values[0], values[2], values[values.length - 2]]; };
 console.log('Example:');
 console.log(easyUnpack([1, 2, 3, 4, 5, 6, 7, 9]));
 // These "asserts" are used for self-checking

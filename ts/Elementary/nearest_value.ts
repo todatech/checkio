@@ -15,12 +15,33 @@
 // 
 // END_DESC
 
-// import assert from "assert";
-const assert = require('assert');
+// const assert = require('assert');
+// function nearestValue(values, search) {
 
-// function nearestValue(values: number[], search: number): number {
-function nearestValue(values, search) {
+//     let idx = values.sort((a, b) => (a - b)).findIndex((num) => num >= search);
 
+//     if (idx === -1) {
+//         if (values[0] >= search) {
+//             return values[0];
+//         } else if (values[values.length - 1] <= search) {
+//             return values[values.length - 1];
+//         }
+//     }
+
+//     if ((idx === 0)) {
+//         return values[idx];
+//     }
+
+//     if ((values[idx] - search) < search - (values[idx - 1])) {
+//         return values[idx];
+//     } else {
+//         return values[idx - 1];
+//     }
+// }
+
+import assert from "assert";
+
+function nearestValue(values: number[], search: number): number {
     let idx = values.sort((a, b) => (a - b)).findIndex((num) => num >= search);
 
     if (idx === -1) {

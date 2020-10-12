@@ -11,12 +11,11 @@
 //
 // END_DESC
 
-// import assert from "assert";
-const assert = require("assert");
+import assert from "assert";
 
-// function isAllUpper(text) {
 function isAllUpper(text: string): boolean {
-  return text.split('').every((letter, idx) => (letter === text.toUpperCase().split('')[idx]));
+  const bTest = text.toUpperCase().split('');
+  return text.split('').every((letter, idx) => (letter === bTest[idx]));
 }
 
 console.log("Example:");

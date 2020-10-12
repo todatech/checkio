@@ -13,17 +13,15 @@
 // 
 // END_DESC
 
-//
-//
-//
-//
-//
-//
-// import assert from "assert";
-var assert = require("assert").strict;
-function isAcceptablePassword(password) {
-    return password.length > 6;
-}
+import assert from "assert";
+const isAcceptablePassword = (password: string): boolean => password.length > 6;
+
+// var assert = require("assert").strict;
+// function isAcceptablePassword(password) {
+//     return password.length > 6;
+// }
+
+
 console.log("Example:");
 console.log(isAcceptablePassword("short"));
 // These "asserts" are used for self-checking
