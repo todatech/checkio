@@ -14,13 +14,12 @@
 // 
 // END_DESC
 
-// import assert from "assert";
-const assert = require('assert');
+import assert from "assert";
 
-function threeWords(text) {
+function threeWords(text: string): boolean {
   let answerList = text.split(' ').reduce((acc, str) => {
     if (Number.isNaN(+str)) {
-      acc.push(acc.pop() + 1);
+      acc.push( (acc.pop() ?? 0) + 1);
     } else {
       acc.push(0)
     }

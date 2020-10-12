@@ -11,11 +11,11 @@
 // 
 // END_DESC
 
-// import assert from "assert";
-const assert = require('assert');
+// const assert = require('assert');
+// function backwardStringByWord(text) {
 
-// function backwardStringByWord(text: string): string {
-function backwardStringByWord(text) {
+import assert from "assert";
+function backwardStringByWord(text: string): string {
     return text.split(' ').map((str) => str.split('').reverse().join('')).join(' ');
 }
 

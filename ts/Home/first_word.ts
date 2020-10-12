@@ -13,14 +13,12 @@
 // 
 // END_DESC
 
-// import assert from "assert"; 
-const assert = require('assert');
+//replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
 
-function firstWord(text) {
+import assert from "assert";
 
-    //replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
-
-    let wordList = text.split(/[\s.]+/).reduce((acc, str) => {
+function firstWord(text: string): string {
+    let wordList = text.split(/[\s.]+/).reduce((acc: string[], str: string) => {
         if ((str !== '') && (str !== '...')) {
             acc.push(str);
         }

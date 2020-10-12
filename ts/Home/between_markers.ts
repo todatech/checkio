@@ -17,11 +17,11 @@
 // If the final marker comes before the initial marker, then return an empty string.
 
 
-// import assert from "assert";
-const assert = require('assert');
+import assert from "assert";
+// const assert = require('assert');
 
-// function betweenMarkers(text: string, begin: string, end: string): string {
-function betweenMarkers(text, begin, end) {
+function betweenMarkers(text: string, begin: string, end: string): string {
+// function betweenMarkers(text, begin, end) {
 
     let beginText = text.indexOf(begin)
     // # Case 1 - no initial marker

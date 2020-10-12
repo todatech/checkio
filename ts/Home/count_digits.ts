@@ -9,20 +9,15 @@
 // 
 // END_DESC
 
-// import assert from "assert";
-const assert = require('assert');
+import assert from "assert";
 
-// function countDigits(text: string): number {
-function countDigits(text) {
+function countDigits(text: string): number {
 
   let count = 0;
   for (let char of text) {
     if ((char >= '0') && (char <= '9')) {
       count++;
     }
-    // these would work... : (
-    // if (+char === parseInt(+char, 10)) {       
-    // (Number.isInteger(char) ? count++ : 0);
   }
   return count;
 }

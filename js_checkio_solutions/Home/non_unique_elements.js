@@ -1,5 +1,5 @@
 #!/usr/bin/env checkio --domain=js run non-unique-elements
-
+"use strict";
 // If you have 50 different plug types, appliances wouldn't be available and would be very        expensive. But once an electric outlet becomes standardized, many companies can design        appliances, and competition ensues, creating variety and better prices for consumers.
 // -- Bill Gates
 // 
@@ -22,18 +22,18 @@
 // 
 // 
 // END_DESC
-
-import assert from "assert";
-
-function nonUniqueElements(data: number[]): number[] {
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var assert_1 = __importDefault(require("assert"));
+function nonUniqueElements(data) {
     return [];
 }
-
-console.log('Example:')
-console.log(nonUniqueElements([1, 2, 3, 1, 3]))
-
-assert.deepEqual(nonUniqueElements([1, 2, 3, 1, 3]), [1, 3, 1, 3]);
-assert.deepEqual(nonUniqueElements([1, 2, 3, 4, 5]), []);
-assert.deepEqual(nonUniqueElements([5, 5, 5, 5, 5]), [5, 5, 5, 5, 5]);
-assert.deepEqual(nonUniqueElements([10, 9, 10, 10, 9, 8]), [10, 9, 10, 10, 9]);
+console.log('Example:');
+console.log(nonUniqueElements([1, 2, 3, 1, 3]));
+assert_1.default.deepEqual(nonUniqueElements([1, 2, 3, 1, 3]), [1, 3, 1, 3]);
+assert_1.default.deepEqual(nonUniqueElements([1, 2, 3, 4, 5]), []);
+assert_1.default.deepEqual(nonUniqueElements([5, 5, 5, 5, 5]), [5, 5, 5, 5, 5]);
+assert_1.default.deepEqual(nonUniqueElements([10, 9, 10, 10, 9, 8]), [10, 9, 10, 10, 9]);
 console.log("Coding complete? Click 'Check' to review your tests and earn cool rewards!");

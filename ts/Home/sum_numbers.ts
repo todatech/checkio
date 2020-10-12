@@ -11,11 +11,9 @@
 // 
 // END_DESC
 
-// import assert from "assert";
-const assert = require('assert');
+import assert from "assert";
 
-// function sumNumbers(test: string): number {
-function sumNumbers(test) {
+function sumNumbers(test: string): number {
     return test.split(' ').map((str) => Number.isNaN(+str) ? 0 : +str).reduce((acc, val) => acc + val, 0)
 }
 
