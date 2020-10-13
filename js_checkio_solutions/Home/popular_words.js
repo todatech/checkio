@@ -1,5 +1,5 @@
 #!/usr/bin/env checkio --domain=js run popular-words
-
+"use strict";
 // In this mission your task is to determine the popularity of certain words in the text.
 // 
 // At the input of your function are given 2 arguments: the text and the array of words the popularity of which you need to determine.
@@ -15,18 +15,23 @@
 // 
 // 
 // END_DESC
-
-"use strict";
-
-function popularWords(text: string, words: string[]) {
-    // your code here
-    return {};
+Object.defineProperty(exports, "__esModule", { value: true });
+function popularWords(text, words) {
+    var popWords = text.toLowerCase().split(/[\n\s]+/)
+        .reduce(function (acc, val, idx) {
+        (acc.hasOwnProperty(val) ? acc[val] += 1 : acc[val] = 1);
+        return acc;
+    }, {});
+    return words.reduce(function (acc, val) {
+        var _a;
+        acc[val] = ((_a = popWords[val]) !== null && _a !== void 0 ? _a : 0);
+        return acc;
+    }, {});
+    // let result: IPopWords = {};
+    // for (let key of words) {
+    // 	result[key] = (popWords[key] ?? 0);
+    // }
+    // return result;
 }
-
-
-console.log('Example:')
-console.log(popularWords(`
-When I was One
-I had just begun
-When I was Two
-I was nearly new`, ['i', 'was', 'three', 'near']))
+console.log('Example:');
+console.log(popularWords("\nWhen I was One\nI had just begun\nWhen I was Two\nI was nearly new", ['i', 'was', 'three', 'near']));

@@ -14,8 +14,13 @@
 import assert from "assert";
 
 function secondIndex(text: string, symbol: string): number | undefined {
-    // your code here
-    return 0;
+  let answer = -1;
+  for (let i = 0; i < 2; i++) {
+    answer++;
+    answer = text.indexOf(symbol, answer);
+    if (answer === -1) return undefined;
+  }
+  return answer;
 }
 
 

@@ -16,11 +16,30 @@
 // 
 // END_DESC
 
-"use strict";
+export { }
+// import assert from 'assert';
+
+interface IPopWords { [key: string]: number }
 
 function popularWords(text: string, words: string[]) {
-    // your code here
-    return {};
+
+	const popWords: IPopWords = text.toLowerCase().split(/[\n\s]+/)
+		.reduce((acc: IPopWords, val: string, idx: number) => {
+			(acc.hasOwnProperty(val) ? acc[val] += 1 : acc[val] = 1);
+			return acc;
+		}, {})
+
+	return words.reduce((acc: IPopWords, val: string) => {
+		acc[val] = (popWords[val] ?? 0);
+		return acc;
+	}, {});
+	// let result: IPopWords = {};
+	// for (let key of words) {
+	// 	result[key] = (popWords[key] ?? 0);
+	// }
+
+	// return result;
+
 }
 
 
