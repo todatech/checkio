@@ -11,18 +11,14 @@
 // 
 // END_DESC
 
-// import assert from "assert";
-const assert = require('assert');
+import assert from "assert";
 
+interface Stock {
+    name: string,
+    price: number,
+};
 
-// interface Stock {
-//     name: string,
-//     price: number,
-// };
-
-// function biggerPrice(limit: number, data: Stock[]): Stock[] {
-function biggerPrice(limit, data) {
-
+function biggerPrice(limit: number, data: Stock[]): Stock[] {
   return data.sort((a, b) => b.price - a.price).filter((val, idx) => idx < limit)
 }
 

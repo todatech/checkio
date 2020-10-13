@@ -14,11 +14,12 @@
 import assert from "assert";
 
 function allTheSame(elements: any[]): boolean {
+  if (Array.isArray(elements) && (!elements.length)) { return true; }
+  if (Array.isArray(elements) && (elements.length === 1)) { return true; }
 
-    // your code here
-    return 0;
+  const testElem = elements[0];
+  return elements.every((elem) => elem === testElem);
 }
-
 
 console.log('Example:')
 console.log(allTheSame([1, 1, 1]))

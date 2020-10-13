@@ -13,13 +13,19 @@
 
 import assert from "assert";
 
-function splitList(values: number[]):number[][] {
-    // your code here
-    return [];
+function splitList(values: number[]): number[][] {
+  let halfLen = Math.floor(values.length / 2);
+  (values.length % 2) ? (halfLen += 1) : 0;
+
+  return values.reduce((acc: [number[], number[]], val: number, idx: number): [number[], number[]] => {    
+    (idx < halfLen)?acc[0].push(val): acc[1].push(val);
+    return acc;
+  }, [[], []])
 }
 
 console.log('Example:');
-console.log(splitList([1, 2, 3, 4, 5, 6]));
+// console.log(splitList([1, 2, 3, 4, 5, 6]));
+console.log(splitList([1, 2, 3]));
 
 // These "asserts" are used for self-checking
 assert.deepEqual(splitList([1, 2, 3, 4, 5, 6]), [[1, 2, 3], [4, 5, 6]]);
