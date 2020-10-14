@@ -14,12 +14,28 @@
 import assert from "assert";
 
 function isAllUpper(text: string): boolean {
-    // your code here
-    return undefined;
+    
+    //1. test for empty string
+    if ((text === '') || (text.trim() === '')) {
+        return false;
+    }
+
+    //2. test for number
+    if (!Number.isNaN(Number(text))) {
+        return false;
+    }
+
+    for (let char of text) {
+        if (char !== char.toUpperCase()) {
+            return false;
+        }
+    }
+    return true;
 }
 
 console.log('Example:');
-console.log(isAllUpper('ALL UPPER'));
+// console.log(isAllUpper('ALL UPPER'));
+console.log(isAllUpper('123'));
 
 // These "asserts" are used for self-checking
 assert.equal(isAllUpper('ALL UPPER'), true);

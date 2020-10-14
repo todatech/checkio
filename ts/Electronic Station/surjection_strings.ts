@@ -14,8 +14,30 @@
 import assert from "assert";
 
 function isometricStrings(line1: string, line2: string): boolean {
-    // your code here
-    return false;
+
+    // if they are the same it's true
+    if (line1 === '' && line2 === '') { return true; }
+    if (line1.length !== line2.length) { return false; }
+    if (line1.length < 3) { return false; }
+
+    // construct mapper
+    const mapper: { [key: string]: string } = {};
+    for (let i = 0; i < line1.length; i++) {
+        mapper[line1[i]] = line2[i];
+    }
+
+    // swapping key/value for reverse lookup
+    const rlookup: { [key: string]: string } = {};
+    for (let key in mapper) {
+        rlookup[mapper[key]] = key;
+    }
+
+    //finding equity
+    for (let i = 0; i < line1.length; i++) {
+        if (line1[i] !== rlookup[line2[i]]) { return false }
+    }
+
+    return true;
 }
 
 console.log('Example:');

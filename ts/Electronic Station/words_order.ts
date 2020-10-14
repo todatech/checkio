@@ -14,8 +14,31 @@
 import assert from "assert";
 
 function wordsOrder(text: string, words: string[]): boolean {
-    // your code here
-    return false;
+
+    // if words array has nothing, we will exit
+    if (Array.isArray(words) && !words.length) { return false; }
+
+    const listOfWords = text.split(' ');
+
+    let result: [string, number][] = []
+
+    for (const word of words) {
+        const idx = listOfWords.findIndex((text) => text === word);
+        if (idx === -1) { return false; }
+        result.push([word, idx])
+    };
+
+    if (result.length === 1) { return true; }
+
+    let testElem = result[0][1];
+    for (let i = 1; i < result.length; i++) {
+        let currentElement = result[i][1];
+        if (currentElement <= testElem) {
+            return false;
+        }
+        testElem = currentElement;
+    }
+    return true;
 }
 
 console.log('Example:');
@@ -26,17 +49,17 @@ assert.equal(wordsOrder('hi world im here', ['world', 'here']), true);
 assert.equal(wordsOrder('hi world im here', ['here', 'world']), false);
 assert.equal(wordsOrder('hi world im here', ['world']), true);
 assert.equal(wordsOrder('hi world im here',
- ['world', 'here', 'hi']), false);
+    ['world', 'here', 'hi']), false);
 assert.equal(wordsOrder('hi world im here',
- ['world', 'im', 'here']), true);
+    ['world', 'im', 'here']), true);
 assert.equal(wordsOrder('hi world im here',
- ['world', 'hi', 'here']), false);
+    ['world', 'hi', 'here']), false);
 assert.equal(wordsOrder('hi world im here', ['world', 'world']), false);
 assert.equal(wordsOrder('hi world im here',
- ['country', 'world']), false);
+    ['country', 'world']), false);
 assert.equal(wordsOrder('hi world im here', ['wo', 'rld']), false);
 assert.equal(wordsOrder('', ['world', 'here']), false);
 assert.equal(wordsOrder('hi world world im here',
- ['world', 'world']), false);
+    ['world', 'world']), false);
 
 console.log("Coding complete? Click 'Check' to earn cool rewards!");

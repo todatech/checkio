@@ -14,8 +14,20 @@
 import assert from "assert";
 
 function isAscending(values: number[]): boolean {
-    // your code here
-    return false;
+    // 1. test emtpy
+    if (Array.isArray(values) && ((values.length === 0) || (values.length === 1))){
+        return true;
+    }
+
+    let lastValue = values[0];
+    for (let i = 1; i<values.length; i++) {
+        const currentVal = values[i];
+        if (lastValue >= currentVal) {
+            return false;
+        }
+        lastValue = currentVal;
+    }
+    return true;
 }
 
 console.log('Example:');

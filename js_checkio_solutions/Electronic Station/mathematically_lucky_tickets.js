@@ -1,5 +1,5 @@
 #!/usr/bin/env checkio --domain=js run mathematically-lucky-tickets
-
+"use strict";
 // Sofia cracks open the treasure chest. Inside are slips of paper with six digit numbers on each slip.
 // 
 // “What’s this?” She asks, quizzed. “Nikola, are these what I think they are?”
@@ -55,35 +55,34 @@
 // 
 // 
 // END_DESC
-
-import assert from "assert";
-
-function luckyTickets(value: string): boolean {
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var assert_1 = __importDefault(require("assert"));
+function luckyTickets(value) {
     // your code here
     return false;
 }
-
 console.log('Example:');
 console.log(luckyTickets('000000'));
-
 // These "asserts" are used for self-checking
-assert.equal(luckyTickets('000000'), true);
-assert.equal(luckyTickets('707409'), true);
-assert.equal(luckyTickets('595347'), false);
-assert.equal(luckyTickets('271353'), false);
-assert.equal(luckyTickets('000955'), false);
-assert.equal(luckyTickets('100478'), true);
-assert.equal(luckyTickets('100479'), false);
-assert.equal(luckyTickets('725126'), true);
-assert.equal(luckyTickets('836403'), false);
-assert.equal(luckyTickets('240668'), false);
-assert.equal(luckyTickets('082140'), true);
-assert.equal(luckyTickets('574699'), false);
-assert.equal(luckyTickets('324347'), false);
-assert.equal(luckyTickets('064377'), true);
-assert.equal(luckyTickets('111111'), false);
-assert.equal(luckyTickets('555555'), false);
-assert.equal(luckyTickets('777777'), false);
-assert.equal(luckyTickets('392039'), false);
-
+assert_1.default.equal(luckyTickets('000000'), true);
+assert_1.default.equal(luckyTickets('707409'), true);
+assert_1.default.equal(luckyTickets('595347'), false);
+assert_1.default.equal(luckyTickets('271353'), false);
+assert_1.default.equal(luckyTickets('000955'), false);
+assert_1.default.equal(luckyTickets('100478'), true);
+assert_1.default.equal(luckyTickets('100479'), false);
+assert_1.default.equal(luckyTickets('725126'), true);
+assert_1.default.equal(luckyTickets('836403'), false);
+assert_1.default.equal(luckyTickets('240668'), false);
+assert_1.default.equal(luckyTickets('082140'), true);
+assert_1.default.equal(luckyTickets('574699'), false);
+assert_1.default.equal(luckyTickets('324347'), false);
+assert_1.default.equal(luckyTickets('064377'), true);
+assert_1.default.equal(luckyTickets('111111'), false);
+assert_1.default.equal(luckyTickets('555555'), false);
+assert_1.default.equal(luckyTickets('777777'), false);
+assert_1.default.equal(luckyTickets('392039'), false);
 console.log("Coding complete? Click 'Check' to earn cool rewards!");

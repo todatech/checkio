@@ -18,7 +18,25 @@
 import assert from "assert";
 
 function verifyAnagrams(line1: string, line2: string): boolean {
-    // your code here
+    const line1List = line1.toLowerCase().replace(/\s/g, '').split('');
+    const line2List = line2.toLowerCase().replace(/\s/g, '').split('');
+    // console.log(line1List, ' ', line2List);
+
+
+    for (let i = 0; i < line1List.length; i++){
+        const charToFind = line1List[i];
+        const idx = line2List.indexOf(charToFind);
+        if (idx === -1){
+            return false;
+        }
+        line1List.splice(i,1);
+        line2List.splice(idx, 1)
+        i--;
+    }
+    if ((line1List.length === 0) && (line2List.length === 0)) {
+        return true;
+    }
+
     return false;
 }
 
