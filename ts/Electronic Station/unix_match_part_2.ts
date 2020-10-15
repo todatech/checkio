@@ -19,10 +19,26 @@
 // END_DESC
 
 import assert from "assert";
+const log = console.log;
 
 function unixMatch(filename: string, pattern: string): boolean {
-    // your code here
-    return true;
+
+  let reString = pattern;
+
+  // // cannot match '!]' pattern because this is needed 
+  reString = reString.replace(/(\!)([^\]])/gi, '^$2');
+
+  // if there is [!] in the search string it is part of the filename
+  // // if you find '[' at the beginning you add '\['
+  reString = reString.replace('[!]', '\\[\!\\]');
+
+  const re = new RegExp(reString, 'i');
+  log(re);
+
+  const fileMatch = filename.match(re);
+  log(fileMatch);
+
+  return (fileMatch !== null) ? (filename === fileMatch[0]) : false;
 }
 
 console.log('Example:');
@@ -31,5 +47,10 @@ console.log(unixMatch('log1.txt', 'log[1234567890].txt'));
 // These "asserts" are used for self-checking
 assert.equal(unixMatch('log1.txt', 'log[1234567890].txt'), true);
 assert.equal(unixMatch('log1.txt', 'log[!1].txt'), false);
+assert.equal(unixMatch('name.exe', 'name.[!.][!.][!.]'), true);
+assert.equal(unixMatch('[!]check.txt', '[!]check.txt'), true);
+assert.equal(unixMatch('1name.txt', '[!abc]name.txt'), true);
+
+
 
 console.log("Coding complete? Click 'Check' to earn cool rewards!");
