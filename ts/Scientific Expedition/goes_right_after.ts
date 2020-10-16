@@ -1,4 +1,5 @@
 #!/usr/bin/env checkio --domain=js run goes-right-after
+
 // In a given word you need to check if one symbol goes right after another.
 // 
 // Cases you should expect while solving this challenge:
@@ -9,28 +10,37 @@
 // 
 // 
 // END_DESC
+
 "use strict";
-var log = console.log;
-function goesAfter(word, first, second) {
+const log = console.log;
+
+function goesAfter(word: string, first: string, second: string): boolean {
+
     //case 4 if both symbols are the same
-    for (var i = 0; i < first.length; i++) {
-        if (first[i] === second[i]) {
-            // log('case 4 - exit'); 
-            return false;
-        }
+    for(let i=0; i< first.length; i++) {
+      if (first[i] === second[i]) {
+        // log('case 4 - exit'); 
+        return false;
+      }
     }
-    var firstIdx = word.indexOf(first);
-    var secondIdx = word.indexOf(second);
+
+    const firstIdx = word.indexOf(first);
+    const secondIdx = word.indexOf(second);
+
     // case 2 - either one is cannot be found
     if ((firstIdx === -1) || (secondIdx === -1)) {
-        return false;
+        return false;   
     }
     // log('1 = ', firstIdx, ', 2 = ', secondIdx);
+
     return (firstIdx + 1 === secondIdx);
 }
+
 var assert = require('assert');
+
 console.log('Example:');
 console.log(goesAfter('world', 'w', 'o'));
+
 // These "asserts" are used for self-checking
 assert.equal(goesAfter('world', 'w', 'o'), true);
 assert.equal(goesAfter('world', 'w', 'r'), false);
@@ -40,4 +50,5 @@ assert.equal(goesAfter('list', 'l', 'o'), false);
 assert.equal(goesAfter('', 'l', 'o'), false);
 assert.equal(goesAfter('list', 'l', 'l'), false);
 assert.equal(goesAfter('world', 'd', 'w'), false);
+
 console.log("Coding complete? Click 'Check' to earn cool rewards!");

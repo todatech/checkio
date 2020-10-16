@@ -1,5 +1,5 @@
 #!/usr/bin/env checkio --domain=js run follow-instructions
-
+"use strict";
 // You’ve received a letter from a friend whom you haven't seen or heard from for a while. In this letter he gives you instructions on how to find a hidden treasure.
 // 
 // In this mission you should follow a given list of instructions which will get you to a certain point on the map. A list of instructions is a string, each letter of this string points you in the direction of your next step.
@@ -20,20 +20,33 @@
 // 
 // 
 // END_DESC
-
-import assert from "assert";
-
-function follow(instructions: string): [number, number] {
-    // your code here
-    return [0, 0];
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var assert_1 = __importDefault(require("assert"));
+var log = console.log;
+function follow(instructions) {
+    var direction = {
+        f: [0, 1],
+        b: [0, -1],
+        l: [-1, 0],
+        r: [1, 0],
+    };
+    var currentPos = [0, 0];
+    for (var _i = 0, instructions_1 = instructions; _i < instructions_1.length; _i++) {
+        var step = instructions_1[_i];
+        currentPos[0] += direction[step][0];
+        currentPos[1] += direction[step][1];
+    }
+    return currentPos;
 }
-
 console.log('Example:');
 console.log(follow('fflff'));
-
 // These "asserts" are used for self-checking
-assert.deepEqual(follow('fflff'), [-1, 4]);
-assert.deepEqual(follow('ffrff'), [1, 4]);
-assert.deepEqual(follow('fblr'), [0, 0]);
-
-console.log("Coding complete? Click 'Check' to earn cool rewards!");
+if (true) {
+    assert_1.default.deepEqual(follow('fflff'), [-1, 4]);
+    assert_1.default.deepEqual(follow('ffrff'), [1, 4]);
+    assert_1.default.deepEqual(follow('fblr'), [0, 0]);
+    console.log("Coding complete? Click 'Check' to earn cool rewards!");
+}

@@ -18,20 +18,42 @@
 // END_DESC
 
 "use strict";
+export { };
+const log = console.log;
 
-function timeConverter(dayTime) {
-    // your code here
-    return 0;
+function timeConverter(dayTime: string): string {
+
+    let [hour, minute]: number[] = dayTime.split(':').map((val) => parseInt(val));
+    let ampm: string;
+
+    (hour < 12) ? ampm = ' a.m.' : ampm = ' p.m.';
+    (hour > 12) ? hour -= 12 : 0;
+    (hour === 0) ? hour = 12 : 0;
+
+    function leadStrWithZero(num: number) {
+        let str: string = num.toString();
+        (str.length === 1) ? str = '0' + str : 0;
+        return str
+    }
+
+    let time = hour.toString() + ':' + leadStrWithZero(minute) + ampm;
+
+    return time;
 }
 
 var assert = require('assert');
-if (!global.is_checking) {
-    console.log('Example:')
-    console.log(timeConverter('12:30'))
 
+
+
+console.log('Example:')
+console.log(timeConverter('12:30'))
+
+
+if (true) {
     // These "asserts" are used for self-checking and not for an auto-testing
     assert.equal(timeConverter('12:30'), '12:30 p.m.')
     assert.equal(timeConverter('09:00'), '9:00 a.m.')
     assert.equal(timeConverter('23:15'), '11:15 p.m.')
+    assert.equal(timeConverter('00:00'), '12:00 a.m.') 
     console.log("Coding complete? Click 'Check' to earn cool rewards!");
 }

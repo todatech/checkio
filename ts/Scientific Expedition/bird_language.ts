@@ -16,20 +16,43 @@
 // 
 // END_DESC
 
+export { };
 import assert from "assert";
 
+const log = console.log;
+
+
 function translate(text: string): string {
-    // your code here
-    return text;
+
+  let vowelsSearchStr = /([a]{3})|([e]{3})|([i]{3})|([o]{3})|([u]{3})|([y]{3})/;
+  let consonantsSearchStr = /[^aeiouy\W][aeiouy]{1}/;
+
+  const reVowels = new RegExp(vowelsSearchStr, 'ig');
+  const reConsonants = new RegExp(consonantsSearchStr, 'ig');
+
+  let t = text.slice();
+
+  t = t.replace(reVowels, (match) => {
+      return match.slice(0, 1);
+    });
+  // log(t);
+  t=t.replace(reConsonants, (match) => {
+      return match.slice(0, 1);
+    });
+  // log(t);
+  return t;
 }
 
 console.log('Example:');
 console.log(translate('hieeelalaooo'));
 
 // These "asserts" are used for self-checking
-assert.equal(translate('hieeelalaooo'), 'hello');
-assert.equal(translate('hoooowe yyyooouuu duoooiiine'), 'how you doin');
-assert.equal(translate('aaa bo cy da eee fe'), 'a b c d e f');
-assert.equal(translate('sooooso aaaaaaaaa'), 'sos aaa');
+if (true) {
 
-console.log("Coding complete? Click 'Check' to earn cool rewards!");
+  assert.equal(translate('hieeelalaooo'), 'hello');
+  assert.equal(translate('hoooowe yyyooouuu duoooiiine'), 'how you doin');
+  assert.equal(translate('aaa bo cy da eee fe'), 'a b c d e f');
+  assert.equal(translate('sooooso aaaaaaaaa'), 'sos aaa');
+
+  console.log("Coding complete? Click 'Check' to earn cool rewards!");
+}

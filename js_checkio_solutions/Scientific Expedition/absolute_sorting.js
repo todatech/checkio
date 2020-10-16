@@ -1,5 +1,5 @@
 #!/usr/bin/env checkio --domain=js run absolute-sorting
-
+"use strict";
 // Let's try some sorting. Here is an array with the specific rules.
 // 
 // The array        has various numbers. You should sort it, but sort it by absolute value in ascending order.    For example, the sequence (-20, -5, 10, 15) will be sorted like so: (-5, 10, 15, -20).    Your function should return the sorted list .
@@ -20,20 +20,16 @@
 // 
 // 
 // END_DESC
-
-import assert from "assert";
-
-function absoluteSorting(values: number[]): number[] {
-    // your code here
-    return values;
-}
-
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var assert_1 = __importDefault(require("assert"));
+var absoluteSorting = function (values) { return values.sort(function (a, b) { return Math.abs(a) - Math.abs(b); }); };
 console.log('Example:');
 console.log(absoluteSorting([-20, -5, 10, 15]));
-
 // These "asserts" are used for self-checking
-assert.deepEqual(absoluteSorting([-20, -5, 10, 15]), [-5, 10, 15, -20]);
-assert.deepEqual(absoluteSorting([1, 2, 3, 0]), [0, 1, 2, 3]);
-assert.deepEqual(absoluteSorting([-1, -2, -3, 0]), [0, -1, -2, -3]);
-
+assert_1.default.deepEqual(absoluteSorting([-20, -5, 10, 15]), [-5, 10, 15, -20]);
+assert_1.default.deepEqual(absoluteSorting([1, 2, 3, 0]), [0, 1, 2, 3]);
+assert_1.default.deepEqual(absoluteSorting([-1, -2, -3, 0]), [0, -1, -2, -3]);
 console.log("Coding complete? Click 'Check' to earn cool rewards!");

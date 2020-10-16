@@ -23,10 +23,7 @@
 
 import assert from "assert";
 
-function absoluteSorting(values: number[]): number[] {
-    // your code here
-    return values;
-}
+const absoluteSorting = (values: number[]): number[] => values.sort((a,b) => Math.abs(a) - Math.abs(b));
 
 console.log('Example:');
 console.log(absoluteSorting([-20, -5, 10, 15]));

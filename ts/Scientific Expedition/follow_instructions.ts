@@ -21,19 +21,36 @@
 // 
 // END_DESC
 
+export {};
 import assert from "assert";
 
+const log = console.log;
+
 function follow(instructions: string): [number, number] {
-    // your code here
-    return [0, 0];
+    const direction: { [key:string]: [number, number]} = {
+        f: [0, 1],
+        b: [0, -1],
+        l: [-1, 0],
+        r: [1, 0],
+    }
+    let currentPos: [number, number] = [0,0]
+
+    for (let step of instructions) {
+        currentPos[0] += direction[step][0];
+        currentPos[1] += direction[step][1]; 
+    }
+    return currentPos;
 }
 
 console.log('Example:');
 console.log(follow('fflff'));
 
 // These "asserts" are used for self-checking
-assert.deepEqual(follow('fflff'), [-1, 4]);
-assert.deepEqual(follow('ffrff'), [1, 4]);
-assert.deepEqual(follow('fblr'), [0, 0]);
+if (true) {
 
-console.log("Coding complete? Click 'Check' to earn cool rewards!");
+    assert.deepEqual(follow('fflff'), [-1, 4]);
+    assert.deepEqual(follow('ffrff'), [1, 4]);
+    assert.deepEqual(follow('fblr'), [0, 0]);
+    
+    console.log("Coding complete? Click 'Check' to earn cool rewards!");
+}

@@ -16,20 +16,29 @@
 // 
 // END_DESC
 
+export { };
 import assert from "assert";
 
+const log = console.log;
+
+
 function commonWords(line1: string, line2: string): string {
-    // your code here
-    return '';
+  const line1List = line1.slice().split(',');
+  const line2List = line2.slice().split(',');
+
+  return line1List.filter(val => line2List.includes(val)).sort().join(',');
 }
 
 console.log('Example:');
 console.log(commonWords('hello,world', 'hello,earth'));
 
-// These "asserts" are used for self-checking
-assert.equal(commonWords('hello,world', 'hello,earth'), 'hello');
-assert.equal(commonWords('one,two,three', 'four,five,six'), '');
-assert.equal(commonWords('one,two,three',
- 'four,five,one,two,six,three'), 'one,three,two');
+if (true) {
 
-console.log("Coding complete? Click 'Check' to earn cool rewards!");
+  // These "asserts" are used for self-checking
+  assert.equal(commonWords('hello,world', 'hello,earth'), 'hello');
+  assert.equal(commonWords('one,two,three', 'four,five,six'), '');
+  assert.equal(commonWords('one,two,three',
+    'four,five,one,two,six,three'), 'one,three,two');
+
+  console.log("Coding complete? Click 'Check' to earn cool rewards!");
+}

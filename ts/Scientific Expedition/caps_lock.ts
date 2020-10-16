@@ -11,18 +11,37 @@
 // 
 // END_DESC
 
+export { };
 import assert from "assert";
 
+const log = console.log;
+
+
 function capsLock(text: string): string {
-    // your code here
-    return text;
+
+  let isCaplocked = false;
+  //will use text as input string and push changes to output below
+  const output = [];
+
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === 'a') {
+      isCaplocked = !isCaplocked;
+    } else {
+      (isCaplocked) ? output.push(text[i].toUpperCase()) : output.push(text[i]);
+    }
+  }
+
+  return output.join('');
 }
 
 console.log('Example:');
 console.log(capsLock('Why are you asking me that?'));
 
-// These "asserts" are used for self-checking
-assert.equal(capsLock('Why are you asking me that?'), 'Why RE YOU sking me thT?');
-assert.equal(capsLock('Always wanted to visit Zambia.'), 'AlwYS Wnted to visit ZMBI.');
+if (true) {
 
-console.log("Coding complete? Click 'Check' to earn cool rewards!");
+  // These "asserts" are used for self-checking
+  assert.equal(capsLock('Why are you asking me that?'), 'Why RE YOU sking me thT?');
+  assert.equal(capsLock('Always wanted to visit Zambia.'), 'AlwYS Wnted to visit ZMBI.');
+
+  console.log("Coding complete? Click 'Check' to earn cool rewards!");
+}
