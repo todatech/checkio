@@ -14,15 +14,39 @@
 // 
 // END_DESC
 
+export { };
 import assert from "assert";
 
+const log = console.log;
+
 function toCamelCase(name: string): string {
-    // your code here
-    return undefined;
+
+    // check entry cases
+    if (name.length === 0) { return '' }
+
+    let result = '';
+    for (let i = 0; i < name.length; i++) {
+        if (i === 0) {
+            result += name[i].toUpperCase();
+        } else {
+            if (name[i] === '_') {
+                if ((i + 1) < name.length) {
+                    result += name[i + 1].toUpperCase();
+                    i++;
+                } else {
+                    // we will skip this because it's end of word.
+                }
+            } else {
+                result += name[i];
+            }
+        }
+    }
+
+    return result;
 }
 
 console.log('Example:');
-console.log(toCamelCase('my_function_name'));
+console.log(toCamelCase('my_function_name_'));
 
 // These "asserts" are used for self-checking
 assert.equal(toCamelCase('my_function_name'), 'MyFunctionName');
