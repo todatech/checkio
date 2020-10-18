@@ -17,24 +17,57 @@
 // 
 // END_DESC
 
+// let data: any = {
+//     value: "/",
+//     next: null,
+//     prev: null,
+//     tail: this,
+// }
+
+// const branch = {
+//     value: elem,
+//     next: null,
+//     prev: data.tail,
+// }
+// data.tail
+//         }
+
+
+export { };
 import assert from "assert";
 
+const log = console.log;
+
+
 function removeBrackets(line: string): string {
-    // your code here
+
+    let result = [];
+    line.slice().split('').forEach(elem => {
+        if ((elem === '(') || (elem === '{') || (elem === '[')) {
+            result.push(elem);
+        }
+        if ((elem === '}') || (elem === '}') || (elem === ']')) {
+
+
+        })
+
     return line;
 }
 
 console.log('Example:');
 console.log(removeBrackets('(()()'));
 
-// These "asserts" are used for self-checking
-assert.equal(removeBrackets('(()()'), '()()');
-assert.equal(removeBrackets('[][[['), '[]');
-assert.equal(removeBrackets('[[(}]]'), '[[]]');
-assert.equal(removeBrackets('[[{}()]]'), '[[{}()]]');
-assert.equal(removeBrackets('[[[[[['), '');
-assert.equal(removeBrackets('[[[[}'), '');
-assert.equal(removeBrackets(''), '');
-assert.equal(removeBrackets('[(])'), '()');
+if (false) {
 
-console.log("Coding complete? Click 'Check' to earn cool rewards!");
+    // These "asserts" are used for self-checking
+    assert.equal(removeBrackets('(()()'), '()()');
+    assert.equal(removeBrackets('[][[['), '[]');
+    assert.equal(removeBrackets('[[(}]]'), '[[]]');
+    assert.equal(removeBrackets('[[{}()]]'), '[[{}()]]');
+    assert.equal(removeBrackets('[[[[[['), '');
+    assert.equal(removeBrackets('[[[[}'), '');
+    assert.equal(removeBrackets(''), '');
+    assert.equal(removeBrackets('[(])'), '()');
+
+    console.log("Coding complete? Click 'Check' to earn cool rewards!");
+}

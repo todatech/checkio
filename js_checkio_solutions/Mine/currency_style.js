@@ -1,5 +1,5 @@
 #!/usr/bin/env checkio --domain=js run currency-style
-
+"use strict";
 // "Well, it's that time of the month again. Payroll checks for our employees,      which require your signatures. And no forgetting to sign the big ones!"
 // -- Trading Places
 // 
@@ -19,23 +19,71 @@
 // 
 // 
 // END_DESC
-
-import assert from "assert";
-
-function currencyStyle(line: string): string {
-    // your code here
-    return '';
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var assert_1 = __importDefault(require("assert"));
+var log = console.log;
+function currencyStyle(line) {
+    //make a copy
+    var arrLine = line.slice();
+    // Strategy --------
+    // 1. Match all currency entries
+    // 2. Test to see which style matches.
+    // 3. If no style matches, it will be a Currency without decimal
+    // matching all currency with $ and end with space or new line
+    var reCurrency = new RegExp(/([\$][\d\.\,]+)(?:[\w])/, 'g');
+    var currencyMatch = arrLine.match(reCurrency);
+    if (!currencyMatch) {
+        return arrLine;
+    }
+    var result = currencyMatch.map(function (curr) {
+        var reUSStyleWithDecimal = new RegExp(/([\$].+)(?:[\.])([\d]{2})/, 'g');
+        var reEUStyleWithDecimal = new RegExp(/([\$].+)(?:[\,])([\d]{2})/, 'g');
+        var USMatch = curr.match(reUSStyleWithDecimal);
+        var EUMatch = curr.match(reEUStyleWithDecimal);
+        // log('U: ', USMatch, 'E: ', EUMatch);
+        if (USMatch) {
+            if (USMatch[0] === curr) {
+                //no change is needed.
+                return curr;
+            }
+        }
+        if (EUMatch) {
+            if (EUMatch[0] === curr) {
+                // replace period with comma, but the other way for decimal places.
+                var ans_1 = curr.replace(/\./g, ',');
+                var pos = curr.length - 3;
+                ans_1 = ans_1.slice(0, pos) + '.' + ans_1.slice(pos + 1);
+                return ans_1;
+            }
+        }
+        // Fall through here, if it's not a decmial match.
+        // Only change period separate to comma separator.
+        var ans = curr.replace(/\./g, ',');
+        return ans;
+    });
+    // log(result);
+    if (result === undefined) {
+        return ''; // this shouldn't be the case. Just for safety
+    }
+    var count = 0;
+    return arrLine.replace(reCurrency, function (match) { return result[count++]; });
 }
-
 console.log('Example:');
-console.log(currencyStyle('$5.34'));
-
-// These "asserts" are used for self-checking
-assert.equal(currencyStyle('$5.34'), '$5.34');
-assert.equal(currencyStyle('$5,34'), '$5.34');
-assert.equal(currencyStyle('$222,100,455.34'), '$222,100,455.34');
-assert.equal(currencyStyle('$222.100.455,34'), '$222,100,455.34');
-assert.equal(currencyStyle('$222,100,455'), '$222,100,455');
-assert.equal(currencyStyle('$222.100.455'), '$222,100,455');
-
-console.log("Coding complete? Click 'Check' to earn cool rewards!");
+// console.log(currencyStyle('$5,34 + $123,44 + $4.321,34 + $4.123'));
+// console.log(currencyStyle('$5,34 + $4.123,44'));
+// console.log(currencyStyle('$222.100.455,34'));
+console.log(currencyStyle('$4.545,45 is less than $5.454,54.'));
+// console.log(currencyStyle('127.255.255.255'))
+if (false) {
+    // These "asserts" are used for self-checking
+    assert_1.default.equal(currencyStyle('$5.34'), '$5.34');
+    assert_1.default.equal(currencyStyle('$5,34'), '$5.34');
+    assert_1.default.equal(currencyStyle('$222,100,455.34'), '$222,100,455.34');
+    assert_1.default.equal(currencyStyle('$222.100.455,34'), '$222,100,455.34');
+    assert_1.default.equal(currencyStyle('$222,100,455'), '$222,100,455');
+    assert_1.default.equal(currencyStyle('$222.100.455'), '$222,100,455');
+    console.log("Coding complete? Click 'Check' to earn cool rewards!");
+}

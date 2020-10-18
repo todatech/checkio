@@ -18,22 +18,47 @@
 // 
 // 
 // END_DESC
-
+export { };
 import assert from "assert";
 
-function findMessage(message: string) -> string {
-    // your code here
-    return message;
+const log = console.log;
+
+// 1st solution --- too long  :(
+// function findMessage(message: string): string {
+//   return message.slice().split('').reduce((acc: string, val: string): string => {
+//     const capLetter = val.toUpperCase();
+//     if (val === capLetter) {
+//       if (capLetter >= 'A' && capLetter <= 'Z') {
+//         acc += capLetter;
+//       }
+//     }
+//     return acc;
+//   }, '')
+// }
+
+// 2nd solution, super concise, yeah!
+function findMessage(message: string): string {
+  const matches = message.match(/([A-Z])/g)
+  return ((matches) ? matches.join('') : '')
 }
+
+
+
+
 
 console.log('Example:');
 console.log(findMessage(('How are you? Eh, ok. Low or Lower? '
- + 'Ohhh.')));
+  + 'Ohhh.')));
 
 // These "asserts" are used for self-checking
-assert.equal(findMessage(('How are you? Eh, ok. Low or Lower? '
- + 'Ohhh.')), 'HELLO');
-assert.equal(findMessage('hello world!'), '');
-assert.equal(findMessage('HELLO WORLD!!!'), 'HELLOWORLD');
+if (true) {
 
-console.log("Coding complete? Click 'Check' to earn cool rewards!");
+  assert.equal(findMessage(('How are you? Eh, ok. Low or Lower? '
+    + 'Ohhh.')), 'HELLO');
+  assert.equal(findMessage('hello world!'), '');
+  assert.equal(findMessage('HELLO WORLD!!!'), 'HELLOWORLD');
+  assert.equal(findMessage('dnwkldhiqw3ry37xhqdxaifiuoa7eya8w6r87a7y87y & Y &* DS &* DYH *& d8w9y8whd7 *& Whdukjldwj * HDJKj'), 'YDSDYHWHDJK');
+
+
+  console.log("Coding complete? Click 'Check' to earn cool rewards!");
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env checkio --domain=js run remove-brackets
-
+"use strict";
 // Before solving this mission, you can try to solve the"Brackets"mission.
 // 
 // Your task is to restore the balance of open and closed brackets by removing the unnecessary ones,     while trying to use the minimum number of deletions.
@@ -16,25 +16,34 @@
 // 
 // 
 // END_DESC
-
-import assert from "assert";
-
-function removeBrackets(line: string): string {
-    // your code here
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var assert_1 = __importDefault(require("assert"));
+var log = console.log;
+function removeBrackets(line) {
+    var result = [];
+    line.slice().split('').forEach(function (elem) {
+        if ((elem === '(') || (elem === '{') || (elem === '[')) {
+            result.push(elem);
+        }
+        if ((elem === '}') || (elem === '}') || (elem === ']')) {
+        }
+    });
     return line;
 }
-
 console.log('Example:');
 console.log(removeBrackets('(()()'));
-
-// These "asserts" are used for self-checking
-assert.equal(removeBrackets('(()()'), '()()');
-assert.equal(removeBrackets('[][[['), '[]');
-assert.equal(removeBrackets('[[(}]]'), '[[]]');
-assert.equal(removeBrackets('[[{}()]]'), '[[{}()]]');
-assert.equal(removeBrackets('[[[[[['), '');
-assert.equal(removeBrackets('[[[[}'), '');
-assert.equal(removeBrackets(''), '');
-assert.equal(removeBrackets('[(])'), '()');
-
-console.log("Coding complete? Click 'Check' to earn cool rewards!");
+if (false) {
+    // These "asserts" are used for self-checking
+    assert_1.default.equal(removeBrackets('(()()'), '()()');
+    assert_1.default.equal(removeBrackets('[][[['), '[]');
+    assert_1.default.equal(removeBrackets('[[(}]]'), '[[]]');
+    assert_1.default.equal(removeBrackets('[[{}()]]'), '[[{}()]]');
+    assert_1.default.equal(removeBrackets('[[[[[['), '');
+    assert_1.default.equal(removeBrackets('[[[[}'), '');
+    assert_1.default.equal(removeBrackets(''), '');
+    assert_1.default.equal(removeBrackets('[(])'), '()');
+    console.log("Coding complete? Click 'Check' to earn cool rewards!");
+}
