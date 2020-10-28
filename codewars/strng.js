@@ -11,18 +11,40 @@ function closest(strng) {
     return [weight, idx, +val];
   }).sort((a, b) => a[0] - b[0]);
 
-  // calculate the weight difference and sort ascending by result
-  const result = []
-  for (let i = 0; i < wlst.length - 1; i++) {
-    let closestCalc = Math.abs(wlst[i + 1][0] - wlst[i][0]) +
-      Math.abs(wlst[i + 1][1] - wlst[i + 1][1]);
-    let weightMin = Math.min(wlst[i][0], wlst[i + 1][0])
-    result.push([closestCalc, weightMin, wlst[i][1], wlst[i + 1][1], wlst[i][2], wlst[i + 1][2]]);
+  // calculate the closet value for each target from list
+  // return the one value that is closet in the format of [closestVal, id, num]
+  function findClosestVal(target, list) {
+    const closestValList = list.map(val => [Math.abs(target[0] - val[0]), val[1], val[2]])
+      .sort((a, b) => (a[0] == b[0]) ? (a[1] - b[1]) : (a[0] - b[0]));
+    return closestValList[0];
   }
-  result.sort((a, b) => (a[0] - b[0]));
+
+  // keep a list of result pairs [[ weight, closestValList ], ... ]
+  const result = [];
+  wlst.forEach((weight, idx) => {
+    // take out the test val from the weight list
+    const testList = wlst.slice();
+    testList.splice(idx, 1);
+
+    const closestVal = findClosestVal(weight, testList);
+    result.push([weight, closestVal]);
+  })
+
+  // sort the values by the requirement set forth in exercise
+  result.sort((a, b) => {
+    if (a[1][0] == b[1][0]) {         // sort by closetVal in 2nd array 1st element closestVal -> smallest weight difference
+      if (a[0][0] == b[0][0]) {       // then by 2nd array, 2nd element id of closest Element -> smallest weight
+        return (a[0][1] - b[0][1]);   // finally by weight of our target -> smallest index
+      } else {
+        return (a[0][0] - b[0][0])
+      }
+    } else {
+      return (a[1][0] - b[1][0])
+    }
+  })
 
   // output the first line from result in proper format
-  const ids = [result[0][2], result[0][3]]
+  const ids = [result[0][0][1], result[0][1][1]]
 
   // these lines are added because server sorted answer differently
   return wlst.filter(val => ids.includes(val[1]))
@@ -40,7 +62,7 @@ function closest(strng) {
 // log(closest("239382 162 254765 182 485944 468751 49780 108 54"))
 // log(closest("54 239382 162 254765 182 485944 468751 49780 108"))
 
-log(closest("456899 50 11992 176 272293 163 389128 96 290193 85 52")) //, [[13, 9, 85], [14, 3, 176]]);
+// log(closest("456899 50 11992 176 272293 163 389128 96 290193 85 52")) //, [[13, 9, 85], [14, 3, 176]]);
 // log(closest("239382 162 254765 182 485944 134 468751 62 49780 108 54")) //, [[8, 5, 134], [8, 7, 62]]);
 // log(closest("241259 154 155206 194 180502 147 300751 200 406683 37 57")) //, [[10, 1, 154], [10, 9, 37]]);
 // log(closest("89998 187 126159 175 338292 89 39962 145 394230 167 1")) //, [[13, 3, 175], [14, 9, 167]]);
@@ -55,7 +77,7 @@ log(closest("456899 50 11992 176 272293 163 389128 96 290193 85 52")) //, [[13, 
 
 
 
-if (false) {
+if (true) {
   assert.deepEqual(closest(""), [])
   assert.deepEqual(closest("456899 50 11992 176 272293 163 389128 96 290193 85 52"), [[13, 9, 85], [14, 3, 176]]);
   assert.deepEqual(closest("239382 162 254765 182 485944 134 468751 62 49780 108 54"), [[8, 5, 134], [8, 7, 62]]);
@@ -140,3 +162,39 @@ closest should return [[9, 0, 54], [9, 2, 162]] or([9, 0, 54], [9, 2, 162])
 or[{ 9, 0, 54}, { 9, 2, 162}] or ...
 
 */
+
+
+
+// old code
+
+  // const result = []
+  // for (let i = 0; i < list.length - 1; i++) {
+  //   let closestVal = Math.abs(target[0] - list[i][0]) +
+  //     Math.abs(target[1] - list[i][1]);
+
+
+
+  //   let weightMin = Math.min(wlst[i][0], wlst[i + 1][0])
+  //   result.push([closestCalc, weightMin, wlst[i][1], wlst[i + 1][1], wlst[i][2], wlst[i + 1][2]]);
+  // }
+  // result.sort((a, b) => (a[0] - b[0]));
+  // return
+  // }
+
+
+  //   // calculate the weight difference and sort ascending by result
+  //   const result = []
+  //   for (let i = 0; i < wlst.length - 1; i++) {
+  //     let closestCalc = Math.abs(wlst[i + 1][0] - wlst[i][0]) +
+  //       Math.abs(wlst[i + 1][1] - wlst[i + 1][1]);
+  //     let weightMin = Math.min(wlst[i][0], wlst[i + 1][0])
+  //     result.push([closestCalc, weightMin, wlst[i][1], wlst[i + 1][1], wlst[i][2], wlst[i + 1][2]]);
+  //   }
+  //   result.sort((a, b) => (a[0] - b[0]));
+
+  //   // output the first line from result in proper format
+  //   const ids = [result[0][2], result[0][3]]
+
+  //   // these lines are added because server sorted answer differently
+  //   return wlst.filter(val => ids.includes(val[1]))
+  //     .sort((a, b) => (a[0] == b[0]) ? (a[1] - b[1]) : (a[0] - b[0]));
