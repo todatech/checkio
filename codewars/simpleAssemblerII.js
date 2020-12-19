@@ -5,6 +5,7 @@ function Stack() {
   this.stack = [];
   this.push = (elem) => this.stack.push(elem);
   this.pop = () => this.stack.pop();
+  this.top = () => this.stack.length;
 }
 
 class ASM_Interepreter {
@@ -24,7 +25,7 @@ class ASM_Interepreter {
       add: (x, y) => this.regs[x] += this.resolve(y),
       sub: (x, y) => this.regs[x] -= this.resolve(y),
       mul: (x, y) => this.regs[x] *= this.resolve(y),
-      div: (x, y) => this.regs[x] /= this.resolve(y),
+      div: (x, y) => this.regs[x] = Math.floor(this.regs[x] / this.resolve(y)),
       cmp: (x, y) => {
         this.cmpRegA = this.resolve(x);
         this.cmpRegB = this.resolve(y);
@@ -54,7 +55,7 @@ class ASM_Interepreter {
   goToLabel = x => this.pc = this.labels[x]
   pushStack = () => this.stack.push(this.pc);
   popStack = () => {
-    if (this.stack.length > 0) {
+    if (this.stack.top() > 0) {
       this.pc = this.stack.pop();
     } else {
       throw new Error('empty stack cannot pop');
@@ -99,10 +100,14 @@ class ASM_Interepreter {
   run = program => {
     // log(program);
     this.tokens = this.tokenize(program);
-    // log(this.tokens);
+    log(this.tokens);
     this.ast = this.parse(this.tokens);
     this.evaluate(this.ast);
-    return this.messageReg;
+    if (!this.regs.length) {
+      return -1;
+    } else {
+      return this.messageReg;
+    }
   }
 }
 
@@ -192,7 +197,7 @@ var program_mod = `mov   a, 11           ; value1
       sub   d, c
       ret`
 
-// log(assemblerInterpreter(program_mod), 'mod(11, 3) = 2');    //doesn't work
+// log(assemblerInterpreter(program_mod), 'mod(11, 3) = 2');
 
 var program_gcd = `mov   a, 81         ; value1
   mov   b, 153        ; value2
@@ -256,7 +261,7 @@ var program_fail = `call  func1
   print:
       msg 'This program should return -1'`
 
-// log(assemblerInterpreter(program_fail), -1);     // Does not work
+// log(assemblerInterpreter(program_fail), -1);     
 
 var program_power = `mov   a, 2            ; value1
   mov   b, 10           ; value2
@@ -280,4 +285,4 @@ var program_power = `mov   a, 2            ; value1
       msg a, '^', b, ' = ', c
       ret`
 
-// log(assemblerInterpreter(program_power), '2^10 = 1024');  // Does not work
+log(assemblerInterpreter(program_power), '2^10 = 1024');  // Does not work
